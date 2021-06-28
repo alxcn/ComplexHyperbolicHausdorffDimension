@@ -2,28 +2,30 @@
 """
 Created on Wed Aug  3 16:41:40 2016
 
-@author: koyomi
+@author: koyomi (@alxcn)
 """
 
 import numpy as np
 import math as m
 
-# El siguiente algoritmo aproxima la dimensión de Hausdorff para un grupo de Schottky complejo hiperbólico a través del algoritmo del Eigenvalor
-# INPUT: 
-# - s: número de letras del abecedario ó numero de reflexiones complejas
-# - k: nivel máximo de busqueda en el arbol de palabras
-# - Horos: matrix de s vectores [c,k] donde c es un centro en coordenadas CxR y k es una dilatación en C\{0}
-# - D: máxima cota para la dimensión de Hausdorff (de preferencia usar: 3.00)
-# OUTPUT:
-# - dim: aproximado a la dimensión de Hausdorff en k digitos
 
-#k=input('Proporcione un entero como numero de reflexiones: ')
+
+# The present algorithm approximates the Hausdorff dimension of a Theta-Symmetric Schottky group of PU(2,1) using the Eigenvalue algorithm.
+# INPUT: 
+#
+# - k: maximal level on the word tree (we compute the Hausdorff dimension at the level k-1)
+# - t: fraction of Pi to construct the Schottky group (t<1/3)
+# - d: Maximal bound for the Hausdorff dimension (d< 3.00)
+# OUTPUT:
+# - dim: Hausdorff dimension approximate up to k-digits
+
+#k=input('Provide the maximal level on the Word-tree: ')
 #s=int(k)
 
 # Primero se generarán los puntos muestra hasta el nivel k del arbol de palabras
 k=input('Proporcione un entero como máximo de logitud de palabras: ')
 levmax=int(k)
-t=input('Fracción de Pi < 1/3: ')
+t=input('Pi Fraction< 1/3: ')
 
 N=3*(2**(levmax-1))
 N1=3*(2**(levmax))
@@ -95,7 +97,7 @@ else:
 
 #Comenzaremos con el algorithmo por sección para encontrar el eigenvalor
 Td=np.zeros([N,N],dtype=float)
-s=input("Proporcione un máximo para la dimensión de Hausdorff: ")
+s=input("Provide a bound for the Hausdorff dimension (<3.00): ")
 d=float(s)
 li=[d]
 cont=0
@@ -146,6 +148,6 @@ while cont<350:
         
 
    
-print("La dimension de Hausdorff es aproxidamamente ",d)
-print("El algoritmo tardo ",cont," iteraciones")
+print("The Hausdorff dimension is ",d)
+print("The algorithm took ",cont," iterations")
 
