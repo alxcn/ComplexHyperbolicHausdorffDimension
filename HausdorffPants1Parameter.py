@@ -2,18 +2,18 @@
 """
 Created on Thu Feb 23 10:03:16 2017
 
-@author: alx
+@author: @alxcn
 """
 
 import numpy as np
 import math as m
 import matplotlib.pyplot as plt
-# El siguiente codigo genera una lista de la dimension de Hausdorff de una familia
-# a un parametro de grupos de Schottky generados por 3 reflexiones complejas.
+# The following algorithm provides the Hausdorff dimension of the limit set for a 1-parameter family of Theta-Schottky groups on PU(2,1)
 # INPUT
-# n = numero de grupos que desea
+# n = Number of desired groups
+# k = Maximal depth on the Word-tree
 # OUTPUT
-# [t,d] = array de angulos t y dimension de Hausdorff del grupo G_t
+# [t,d] = array of angles t and Hausdorff dimension of the limit set of G_t
 
 def PerronFrobenius(p,A,y):
     import numpy as np
@@ -125,8 +125,8 @@ def Hausdorff(levmax,t,d):
                 cont=cont+1
     return(d)
     
-n=input('Proporcione el numero de grupos que desea ')
-k=input('Proporcione el numero maximo de longitud de palabras ')
+n=input('Provide the Number maximal of groups ')
+k=input('Maximal depth on the Word-tree')
 angulos=np.zeros([n+1],dtype=float)
 dimension=np.zeros([n+1],dtype=float)
 for i in range(1,n+1):
@@ -140,5 +140,5 @@ for i in range(1,n+1):
 
 plt.plot(angulos,dimension, linewidth=2.0)
 plt.ylabel('Hausdorff dimension')
-plt.xlabel('Angulo < Pi/3')
+plt.xlabel('Angle < Pi/3')
 plt.show()
